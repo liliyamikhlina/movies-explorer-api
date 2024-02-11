@@ -39,11 +39,11 @@ app.use(requestLogger);
 
 app.use(rateLimiterMiddleware);
 
-app.use(routes);
-
 app.get('/', (req, res) => {
   res.send('Добро пожаловать на сервер!');
 });
+
+app.use(routes);
 
 app.use('*', (req, res, next) => {
   next(new NotFound('Данные по запросу не найдены'));
