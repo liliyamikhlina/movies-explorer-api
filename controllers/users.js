@@ -26,7 +26,7 @@ module.exports.updateUser = (req, res, next) => {
   )
     .then((user) => {
       if (!user) {
-        throw new NotFound('Пользователь с указанным _id не найден');
+        throw new NotFound('Пользователь с указанным id не найден');
       }
       return res.send(user);
     })
