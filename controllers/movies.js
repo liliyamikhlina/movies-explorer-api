@@ -4,8 +4,13 @@ const NotFound = require('../errors/NotFound');
 const Forbidden = require('../errors/Forbidden');
 
 module.exports.getMovies = (req, res, next) => {
-  Movie.find({})
-    .then((cards) => res.send(cards))
+  Movie.find({ owner: req.user.id })
+    .then((movies) => {
+      if (!movies) {
+        throw new NotFound('Фильмы не найдены');
+      }
+      res.send(movies);
+    })
     .catch(next);
 };
 
