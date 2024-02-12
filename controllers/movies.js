@@ -3,7 +3,7 @@ const BadRequest = require('../errors/BadRequest');
 const NotFound = require('../errors/NotFound');
 const Forbidden = require('../errors/Forbidden');
 
-module.exports.getMovies = (req, res, next) => {
+module.exports.getMyMovies = (req, res, next) => {
   Movie.find({ owner: req.user.id })
     .then((movies) => {
       if (!movies) {

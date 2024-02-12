@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
-const { getMovies, createMovie, deleteMovie } = require('../controllers/movies');
+const { getMyMovies, createMovie, deleteMovie } = require('../controllers/movies');
 
-router.get('/movies', getMovies);
+router.get('/movies', getMyMovies);
 
 router.post('/movies', celebrate({
   body: Joi.object().keys({
