@@ -13,6 +13,12 @@ const rateLimiterMiddleware = require('./middlewares/rateLimiterMiddleware');
 const { PORT = 3000 } = process.env;
 const app = express();
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  next();
+});
+
 app.use(cors({
   origin: [
     'http://localhost:3000',
