@@ -13,17 +13,14 @@ const rateLimiterMiddleware = require('./middlewares/rateLimiterMiddleware');
 const { PORT = 3000 } = process.env;
 const app = express();
 
-app.use(
-  cors({
-    origin: [
-      'http://localhost:3000',
-      'http://localhost:3001',
-      'https://liliya.mikh.nomoredomainswork.ru',
-      'https://api.liliya.mikh.nomoredomainswork.ru',
-    ],
-    credentials: true,
-  }),
-);
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'https://liliya.mikh.nomoredomainswork.ru',
+    'https://api.liliya.mikh.nomoredomainswork.ru'],
+  credentials: true,
+}));
 
 app.use(helmet());
 
