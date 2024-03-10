@@ -18,8 +18,8 @@ app.use(
     origin: [
       'http://localhost:3000',
       'http://localhost:3001',
-      'https://liliya.mikhlina.nomoredomainswork.ru',
-      'https://api.liliya.mikhlina.nomoredomainswork.ru',
+      'https://liliya.mikh.nomoredomainswork.ru',
+      'https://api.liliya.mikh.nomoredomainswork.ru',
     ],
     credentials: true,
   }),
