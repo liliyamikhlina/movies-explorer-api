@@ -53,7 +53,7 @@ module.exports.deleteMovie = (req, res, next) => {
       if (movie.owner.toString() !== req.user.id) {
         return next(new Forbidden('Недостаточно прав для удаления этой карточки'));
       }
-      return Movie.findByIdAndRemove(req.params.movieId)
+      return Movie.deleteOne()
         .then((delMovie) => res.send(delMovie))
         .catch(next);
     })
