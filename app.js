@@ -8,7 +8,6 @@ const routes = require('./routes');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 const NotFound = require('./errors/NotFound');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
-const rateLimiterMiddleware = require('./middlewares/rateLimiterMiddleware');
 
 const { PORT = 3000 } = process.env;
 const app = express();
@@ -39,8 +38,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/bitfilmsdb', {
 });
 
 app.use(requestLogger);
-
-app.use(rateLimiterMiddleware);
 
 app.get('/', (req, res) => {
   res.send('Добро пожаловать на сервер!');
