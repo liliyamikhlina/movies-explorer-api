@@ -45,7 +45,7 @@ module.exports.createMovie = (req, res, next) => {
 };
 
 module.exports.deleteMovie = (req, res, next) => {
-  Movie.findById((req.params.movieId))
+  Movie.findById((req.params._id))
     .then((movie) => {
       if (!movie) {
         throw new NotFound('Карточка с указанным id не найдена');
@@ -53,7 +53,7 @@ module.exports.deleteMovie = (req, res, next) => {
       if (movie.owner.toString() !== req.user.id) {
         return next(new Forbidden('Недостаточно прав для удаления этой карточки'));
       }
-      return Movie.deleteOne()
+      return Movie.deleteOne({ _id: req.params._id })
         .then((delMovie) => res.send(delMovie))
         .catch(next);
     })
